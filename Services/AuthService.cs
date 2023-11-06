@@ -22,7 +22,7 @@ public class AuthService : IAuthService
 
     public async Task<User> RegisterUser(RegistrationRequest request)
     {
-        var existingUser = _userRepository.GetUserByUsernameAsync(request.Username);
+        var existingUser = await _userRepository.GetUserByUsernameAsync(request.Username);
         if (existingUser != null)
         {
             throw new BadRequestException("Username already in use.");
